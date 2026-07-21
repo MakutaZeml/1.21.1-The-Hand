@@ -1,15 +1,15 @@
 package com.zeml.ripplez.init.power;
 
-import static com.github.standobyte.jojo.core.JojoRegistries.ABILITY_TYPES;
-
+import com.github.standobyte.jojo.core.JojoRegistries;
 import com.github.standobyte.jojo.powersystem.ability.Ability;
 import com.github.standobyte.jojo.powersystem.ability.AbilityType;
-
+import com.zeml.ripplez.RipplesAddon;
 import com.zeml.ripplez.jojoimp.stands.zh.*;
 import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public final class AddonStandAbilities {
-	public static void load() {}
+	public static final DeferredRegister<AbilityType<?>> ABILITY_TYPES = DeferredRegister.create(JojoRegistries.ABILITY_TYPES_REG, RipplesAddon.MOD_ID);
 
 	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> ERASURE = ABILITY_TYPES.register(
 			"erasure", key -> new AbilityType<>(key, EraseAbility::new));

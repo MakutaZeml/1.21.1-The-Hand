@@ -1,11 +1,11 @@
 package com.zeml.ripplez;
 
 import com.github.standobyte.jojo.PacketsRegister;
-import net.minecraft.network.RegistryFriendlyByteBuf;
+import com.github.standobyte.jojo.PacketsRegister.PacketType;
+
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
-import net.neoforged.neoforge.network.handling.IPayloadHandler;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
 public class PacketsAddonRegister {
@@ -29,11 +29,4 @@ public class PacketsAddonRegister {
         packetType.register(registrar, handler.type(), handler.reader(), handler::handle);
     }
 
-    @FunctionalInterface
-    private static interface PacketType {
-        <T extends CustomPacketPayload> void register(PayloadRegistrar registrar,
-              CustomPacketPayload.Type<T> type,
-              StreamCodec<? super RegistryFriendlyByteBuf, T> reader,
-              IPayloadHandler<T> handler);
-    }
 }

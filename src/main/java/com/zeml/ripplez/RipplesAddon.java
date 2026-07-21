@@ -22,8 +22,8 @@ public class RipplesAddon {
     public RipplesAddon(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.register(this);
 
+        AddonStandAbilities.ABILITY_TYPES.register(modEventBus);
         AddonPlayerPowers.PLAYER_POWERS.register(modEventBus);
-        AddonStandAbilities.load();
         AddonStands.STANDS.register(modEventBus);
 
         AddonBlocks.BLOCKS.register(modEventBus);
