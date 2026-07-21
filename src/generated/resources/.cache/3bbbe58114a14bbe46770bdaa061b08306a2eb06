@@ -1,0 +1,12 @@
+// 1.21.1	2026-07-20T16:33:22.9705967	Tags for minecraft:damage_type mod id ripplez
+04c3d72e9f46aba7d0b9b508974d337410c66743 data/jojo/tags/damage_type/can_hurt_stands.json
+04c3d72e9f46aba7d0b9b508974d337410c66743 data/jojo_ripples/tags/damage_type/adds_resolve.json
+04c3d72e9f46aba7d0b9b508974d337410c66743 data/jojo_ripples/tags/damage_type/armor_break_cooldown.json
+04c3d72e9f46aba7d0b9b508974d337410c66743 data/minecraft/tags/damage_type/always_hurts_ender_dragons.json
+04c3d72e9f46aba7d0b9b508974d337410c66743 data/minecraft/tags/damage_type/bypasses_armor.json
+04c3d72e9f46aba7d0b9b508974d337410c66743 data/minecraft/tags/damage_type/bypasses_cooldown.json
+04c3d72e9f46aba7d0b9b508974d337410c66743 data/minecraft/tags/damage_type/bypasses_effects.json
+04c3d72e9f46aba7d0b9b508974d337410c66743 data/minecraft/tags/damage_type/bypasses_enchantments.json
+04c3d72e9f46aba7d0b9b508974d337410c66743 data/minecraft/tags/damage_type/bypasses_resistance.json
+04c3d72e9f46aba7d0b9b508974d337410c66743 data/minecraft/tags/damage_type/panic_causes.json
+04c3d72e9f46aba7d0b9b508974d337410c66743 data/neoforge/tags/damage_type/is_physical.json

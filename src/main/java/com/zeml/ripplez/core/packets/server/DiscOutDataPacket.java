@@ -1,7 +1,7 @@
 package com.zeml.ripplez.core.packets.server;
 
+import com.github.standobyte.jojo.PacketsRegister.PacketOGHandler;
 import com.github.standobyte.jojo.client.ClientProxy;
-import com.zeml.ripplez.core.AddonPackets;
 import com.zeml.ripplez.init.AddonDataAttachmentTypes;
 import com.zeml.ripplez.jojoimp.stands.white_snake.data.DiscOutData;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -18,7 +18,7 @@ public record DiscOutDataPacket(int entityID, boolean discsOut, boolean hasMemor
     }
     private static Type<DiscOutDataPacket> type;
 
-    public static class Handler implements AddonPackets.PacketOGHandler<DiscOutDataPacket>{
+    public static class Handler implements PacketOGHandler<DiscOutDataPacket>{
 
         public Handler(ResourceLocation packetId) {
             type = new Type<>(packetId);

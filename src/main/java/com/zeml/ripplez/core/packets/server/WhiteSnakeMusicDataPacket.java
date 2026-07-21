@@ -1,7 +1,7 @@
 package com.zeml.ripplez.core.packets.server;
 
+import com.github.standobyte.jojo.PacketsRegister.PacketOGHandler;
 import com.github.standobyte.jojo.client.ClientProxy;
-import com.zeml.ripplez.core.AddonPackets;
 import com.zeml.ripplez.init.AddonDataAttachmentTypes;
 import com.zeml.ripplez.jojoimp.stands.white_snake.data.WhiteSnakeMusicData;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -19,7 +19,7 @@ public record WhiteSnakeMusicDataPacket(int entityID, ItemStack disc, Integer ti
     }
     private static Type<WhiteSnakeMusicDataPacket> type;
 
-    public static class Handler implements AddonPackets.PacketOGHandler<WhiteSnakeMusicDataPacket>{
+    public static class Handler implements PacketOGHandler<WhiteSnakeMusicDataPacket>{
 
         public Handler(ResourceLocation packetId) {
             type = new Type<>(packetId);
