@@ -36,7 +36,6 @@ public class MusicDisckedEffect extends StandEffectInstance {
             WhiteSnakeMusicData disc = living.getData(AddonDataAttachmentTypes.DISC);
             if(!disc.getDisc().isEmpty()){
                 JukeboxPlayable jukeboxplayable = disc.getDisc().get(DataComponents.JUKEBOX_PLAYABLE);
-                RipplesAddon.getLogger().debug("{} ñusic {}",level.isClientSide,disc);
                 if(jukeboxplayable != null){
                     Optional<Holder<JukeboxSong>> optional = JukeboxSong.fromStack(this.level.registryAccess(),disc.getDisc());
                     SoundEvent soundEvent = optional.map(jukeboxSongHolder -> {
@@ -59,7 +58,7 @@ public class MusicDisckedEffect extends StandEffectInstance {
         LivingEntity target = getTargetLiving();
         if(target != null){
             WhiteSnakeMusicData data = target.getData(AddonDataAttachmentTypes.DISC);
-            if(data.getTicks() >= data.getTicksTotal()*2){
+            if(data.getTicks() >= data.getTicksTotal()){
                 this.remove();
             }
             if(!level.isClientSide){

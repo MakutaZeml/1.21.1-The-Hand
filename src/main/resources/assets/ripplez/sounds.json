@@ -1,7 +1,7 @@
 {
   "erasure": {
     "subtitle": "ripples_balls.subtitle.spay",
-    "sounds":["ripplez_diu:stand/hand/the_hand_erase2","ripplez_diu:stand/hand/the_hand_erase3"]
+    "sounds":["ripplez:stand/hand/the_hand_erase2","ripplez:stand/hand/the_hand_erase3"]
   },
   "aleluya":{
     "subtitle": "ripplez.subtitle.aleluya",

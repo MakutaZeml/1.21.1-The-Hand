@@ -40,7 +40,6 @@ public class HeavyPutDiscAbility extends StandEntityAbility {
 
     @Override
     public boolean isAbilityAvailable(Power<?> context){
-        RipplesAddon.getLogger().debug("Wiñ {} {}",WhiteSnakeUtil.standHasDisc(context),super.isAbilityAvailable(context));
         return super.isAbilityAvailable(context) && WhiteSnakeUtil.standHasDisc(context);
     }
 
