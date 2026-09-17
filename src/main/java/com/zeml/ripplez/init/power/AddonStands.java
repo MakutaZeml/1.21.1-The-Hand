@@ -5,6 +5,7 @@ import com.github.standobyte.jojo.powersystem.standpower.entity.EntityStandType;
 import com.github.standobyte.jojo.powersystem.standpower.type.StandType;
 
 import com.zeml.ripplez.RipplesAddon;
+import com.zeml.ripplez.init.power.stands.StandInitGreenDay;
 import com.zeml.ripplez.init.power.stands.StandInitWhiteSnake;
 import com.zeml.ripplez.init.power.stands.StandInitZaHando;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -17,6 +18,8 @@ public class AddonStands {
 	
 	public static final DeferredHolder<StandType, EntityStandType> ZA_HANDO = STANDS.register("za_hando", StandInitZaHando::create);
 	public static final DeferredHolder<StandType, EntityStandType> WHITE_SNAKE = STANDS.register("white_snake", StandInitWhiteSnake::create);
+	public static final DeferredHolder<StandType, EntityStandType> GREEN_DAY = STANDS.register("green_day", StandInitGreenDay::create);
+
 
 	static {
 		PLAYER_CAN_GET_FROM_ARROW.add(ZA_HANDO);

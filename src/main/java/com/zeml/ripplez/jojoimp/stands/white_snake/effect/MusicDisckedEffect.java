@@ -10,12 +10,17 @@ import com.zeml.ripplez.jojoimp.stands.white_snake.client.sound.WhiteSnakeMusicI
 import com.zeml.ripplez.jojoimp.stands.white_snake.data.WhiteSnakeMusicData;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.JukeboxPlayable;
 import net.minecraft.world.item.JukeboxSong;
+import net.minecraft.world.level.block.entity.JukeboxBlockEntity;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.NotNull;
 
@@ -63,6 +68,15 @@ public class MusicDisckedEffect extends StandEffectInstance {
             }
             if(!level.isClientSide){
                 data.setTicks(tickCount);
+                if(tickCount % 20L == 0L){
+                    if (level instanceof ServerLevel serverlevel) {
+                        level.gameEvent(target,GameEvent.JUKEBOX_PLAY, target.position());
+                        Vec3 vec3 = target.getEyePosition();
+                        float f = (float)level.getRandom().nextInt(4) / 24.0F;
+                        serverlevel.sendParticles(ParticleTypes.NOTE, vec3.x(), target.getBbHeight()+target.getY(), vec3.z(), 0, f, 0.0, 0.0, 1.0);
+                    }
+                }
+
             }
 
         }

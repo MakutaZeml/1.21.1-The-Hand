@@ -37,6 +37,11 @@ public class StandInitWhiteSnake {
                             punch.setDefaultPhaseLength(ActionPhase.WINDUP, 5);
                         })
                         .addAbility("heavy_punch", ModStandAbilities.HEAVY_PUNCH)
+
+                        .addAbility("grab",ModStandAbilities.GRAB)
+
+                        .addAbility("block_toss", ModStandAbilities.BLOCK_TOSS)
+
                         .addAbility("put_disc", AddonStandAbilities.PUT_DISC)
                         .addAbility("take_memory",AddonStandAbilities.TAKE_OUT_MEMORY, take -> take.isSubAbility = true)
                         .addAbility("discfy",AddonStandAbilities.DISCFY)
@@ -45,11 +50,14 @@ public class StandInitWhiteSnake {
                         .addAbility("barrage", ModStandAbilities.BARRAGE)
 
                         .addAbility("grab_barrage", ModStandAbilities.BARRAGE)
+                        .addAbility("user_throw_disc",AddonStandAbilities.USER_THROW_DISC,disc -> disc.isSubAbility=true)
 
                         .makeControlScheme("hotbar")
                         .bind("punch", InputMethod.CLICK, InputKey.LMB)
                         .bind("barrage", InputMethod.HOLD, InputKey.LMB)
                         .bind("heavy_punch", InputMethod.CLICK, InputKey.RMB)
+                        .bind("grab", InputMethod.CLICK, InputKey.RMB.withModifier(InputKey.Modifier.CONTROL))
+                        .bind("block_toss", InputMethod.HOLD, InputKey.LMB)
                         .bind("put_disc",InputMethod.CLICK,InputKey.RMB)
                         .bind("discfy", InputMethod.HOLD, InputKey.RMB)
 
@@ -64,6 +72,8 @@ public class StandInitWhiteSnake {
                         .addSkill(StandUnlockableSkill.startingAbility("punch"))
                         .addSkill(StandUnlockableSkill.startingAbility("barrage"))
                         .addSkill(StandUnlockableSkill.startingAbility("heavy_punch"))
+                        .addSkill(StandUnlockableSkill.startingAbility("grab"))
+                        .addSkill(StandUnlockableSkill.startingAbility("block_toss").setIncomplete())
                         .addSkill(StandUnlockableSkill.unlockableAbility("put_disc",200).prerequisiteSkill("discfy"))
                         .addSkill(StandUnlockableSkill.unlockableAbility("discfy",100))
                         .addSkill(StandUnlockableSkill.startingAbility("take_memory").prerequisiteSkill("discfy"))

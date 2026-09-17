@@ -7,7 +7,7 @@
   },
   "stand_unsummon": {
     "replace": true,
-    "sounds": [ "ripplez:stan/white_snaked/whitesnake_unsummon" ]
+    "sounds": [ "ripplez:stand/white_snake/whitesnake_unsummon" ]
   },
   "stand_punch_light": {
     "replace": true,

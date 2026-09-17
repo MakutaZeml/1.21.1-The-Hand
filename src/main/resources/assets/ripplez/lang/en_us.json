@@ -1,7 +1,6 @@
 {
   "stand.ripplez.za_hando": "The Hand",
   "stand.ripplez.za_hando.desc": "An humanoid Power-Type Stand that has the ability to erase anything that touches with its right hand, its broken ability gets compensated with its low speed",
-
   "jojo_ripples.skill.erasure": "Erase",
   "jojo_ripples.ability.erasure": "Erase",
   "jojo_ripples.skill.erasure.desc": "Erase your target dealing from 0.1 up to 0.8 damage of its total health, if the target is smaller than your stand and has less max health it can be deleted instantly",
@@ -18,12 +17,9 @@
   "jojo_ripples.ability.erase_items": "Erase Items",
   "jojo_ripples.skill.erase_items.desc": "Erase the items you are selecting in your inventory",
   "jojo_ripples.skill.erase_items.controls": "C on item in the inventory",
-
   "stand.ripplez.white_snake": "White Snake",
   "stand.ripplez.white_snake.desc": "A humanoid Stand-Type power that has the power of psyche manipulation, such as illusions, this power mainly manifest in form of discs, whose are able to contain orders to the target or store the target memories or Stand-Type power",
-
   "entity.ripplez.threw_disc": "Disc",
-
   "jojo_ripples.skill.put_disc": "Put Disc",
   "jojo_ripples.ability.put_disc": "Put Disc",
   "jojo_ripples.skill.put_disc.desc": "Put the disc your Stand has in its main hand on the target",
@@ -48,10 +44,15 @@
   "jojo_ripples.ability.fake_snake": "Fake Snake",
   "jojo_ripples.skill.fake_snake.desc": "Take out the stand disc of an entity that has its discs out",
   "jojo_ripples.skill.fake_snake.controls": "Hold \uEAFE",
-
   "item.ripplez.music_disc_aleluya": "Holy Music Disc",
-
   "jukebox_song.ripplez.aleluya": "Händel Messiah - Hallelujah Chorus",
+
+  "stand.ripplez.green_day": "Green Day",
+  "stand.ripplez.green_day.desc": "An Humanoid Power-Stand type. It can spread deadly mold, which acts like an infection,that gets more lethal the lower the target is to its maximum height it was when it got infected by the mold",
+  "jojo_ripples.ability.molding_time": "It's Molding Time",
+  "jojo_ripples.skill.molding_time": "It's Molding Time",
+  "jojo_ripples.skill.molding_time.desc": "Activate your mold spores to infect every entity in range, each infected entity acts as a propagation vector being",
+  "jojo_ripples.skill.molding_time.controls": "Special",
 
   "ripplez.subtitle.aleluya": "Hallelujah Chorus",
   "ripplez.subtitle.cd_out": "CD ejecting",
@@ -61,5 +62,10 @@
   "death.attack.ripplez_erase": "%s has been erased",
   "death.attack.ripplez_erase.player": "%s has been erased by %s",
   "death.attack.ripplez_erase.entity": "%s has been erased by %s",
-  "death.attack.ripplez_erase.entity.item": "%s has been erased by %s using %s"
+  "death.attack.ripplez_erase.entity.item": "%s has been erased by %s using %s",
+
+  "death.attack.ripplez_mold": "%s has been consumed in mold",
+  "death.attack.ripplez_mold.player": "%s has been consumed in mold by %s",
+  "death.attack.ripplez_mold.entity": "%s has been consumed in mold by %s",
+  "death.attack.ripplez_mold.entity.item": "%s has been consumed in mold by %s using %s"
 }

@@ -51,6 +51,7 @@ public class AddonRenderers {
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onClientSetup0(FMLClientSetupEvent event){
         whiteSnakeStats();
+        greenDayStats();
     }
 
     public static void whiteSnakeStats(){
@@ -77,6 +78,27 @@ public class AddonRenderers {
                 }
                 if(stat.name().equals(StandStatsRenderer.HexagonStandStat.SPEED.name())){
                     return 2;
+                }
+
+                return super.statConvertedValue(stat, standData, stats, statLeveling);
+            }
+        });
+    }
+
+    public static void greenDayStats(){
+        StandStatsRenderer.overrideCosmeticStats(AddonStands.GREEN_DAY.getId(),new StandStatsRenderer.CosmeticStandStats(){
+            @Override
+            public String statRankLetter(StandStatsRenderer.HexagonStandStat stat, StandPower standData, double statConvertedValue) {
+                if(stat.name().equals(StandStatsRenderer.HexagonStandStat.RANGE.name())){
+                    return "A";
+                }
+                return super.statRankLetter(stat, standData, statConvertedValue);
+            }
+
+            @Override
+            public float statConvertedValue(StandStatsRenderer.HexagonStandStat stat, StandPower standData, StandStats stats, float statLeveling) {
+                if(stat.name().equals(StandStatsRenderer.HexagonStandStat.RANGE.name())){
+                    return 20;
                 }
 
                 return super.statConvertedValue(stat, standData, stats, statLeveling);
