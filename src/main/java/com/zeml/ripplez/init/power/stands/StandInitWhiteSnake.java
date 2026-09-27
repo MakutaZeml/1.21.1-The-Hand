@@ -65,7 +65,6 @@ public class StandInitWhiteSnake {
 
                         .finalizeControlScheme()
 
-
                         .addAbility("throw_disc", AddonStandAbilities.THROW_DISC)
                         .inHotbar(0, InputMethod.CLICK)
 

@@ -1,11 +1,15 @@
 package com.zeml.ripplez.client;
 
+import com.github.standobyte.jojo.client.standskin.StandSkinsScreen;
 import com.github.standobyte.jojo.client.ui.StandStatsRenderer;
 import com.github.standobyte.jojo.powersystem.standpower.StandPower;
 import com.github.standobyte.jojo.powersystem.standpower.StandStats;
 import com.zeml.ripplez.RipplesAddon;
 import com.zeml.ripplez.init.AddonEntityTypes;
 import com.zeml.ripplez.init.power.AddonStands;
+import com.zeml.ripplez.init.power.stands.StandInitWhiteAlbum;
+import com.zeml.ripplez.jojoimp.stands.white_album.client.WhiteAlbumSkinView;
+import com.zeml.ripplez.jojoimp.stands.white_album.client.renderer.WhiteAlbumLayer;
 import com.zeml.ripplez.jojoimp.stands.white_snake.client.renderer.DiscOutLayer;
 import com.zeml.ripplez.jojoimp.stands.white_snake.client.renderer.ThrowDiscRenderer;
 import net.minecraft.client.Minecraft;
@@ -44,6 +48,7 @@ public class AddonRenderers {
     }
     private static <T extends LivingEntity, M extends HumanoidModel<T>> void addHumanoidLayers(LivingEntityRenderer<T, M> renderer, EntityRendererProvider.Context context) {
         renderer.addLayer(new DiscOutLayer<>(renderer,context.getItemInHandRenderer()));
+        renderer.addLayer(new WhiteAlbumLayer<>(renderer));
 
     }
 
@@ -52,6 +57,8 @@ public class AddonRenderers {
     public static void onClientSetup0(FMLClientSetupEvent event){
         whiteSnakeStats();
         greenDayStats();
+
+        StandSkinsScreen.skinViewTypes.put(StandInitWhiteAlbum.SKIN_VIEW_TYPE, WhiteAlbumSkinView::new);
     }
 
     public static void whiteSnakeStats(){

@@ -11,6 +11,7 @@ import com.zeml.ripplez.jojoimp.stands.green_day.GreenFinisherAbility;
 import com.zeml.ripplez.jojoimp.stands.green_day.MoldAbility;
 import com.zeml.ripplez.jojoimp.stands.green_day.MoldUserEffect;
 import com.zeml.ripplez.jojoimp.stands.green_day.MoldVictimEffect;
+import com.zeml.ripplez.jojoimp.stands.white_album.WhitePunch;
 import com.zeml.ripplez.jojoimp.stands.white_snake.*;
 import com.zeml.ripplez.jojoimp.stands.white_snake.effect.DiscOutEffect;
 import com.zeml.ripplez.jojoimp.stands.white_snake.effect.MemorylessEffect;
@@ -63,6 +64,10 @@ public final class AddonStandAbilities {
 
 	public static final DeferredHolder<EntityCustomEffectType<?>, EntityCustomEffectType<MemorylessEffect>> NO_MEMORY_EFFECT = ModStandAbilities.STAND_EFFECT_TYPES.register(
 			"no_memory", key -> new EntityCustomEffectType<>(key, MemorylessEffect::new));
+
+	//White Album
+	public static final DeferredHolder<AbilityType<?>, AbilityType<WhitePunch>> WHITE_PUNCH = ABILITY_TYPES.register(
+			"wa_punch", key -> new AbilityType<>(key, WhitePunch::new));
 
 	//Green Day
 	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> CHOP = ABILITY_TYPES.register(
