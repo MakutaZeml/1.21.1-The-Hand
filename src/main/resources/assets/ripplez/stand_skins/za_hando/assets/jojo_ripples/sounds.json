@@ -2,17 +2,17 @@
   "stand_summon": {
     "replace": true,
     "sounds": [
-      "ripplez:stand/the_hand_summon"
+      "ripplez:stand/hand/the_hand_summon"
     ]
   },
   "stand_punch_light": {
     "replace": true,
     "sounds": [
-      "ripplez:stand/the_hand_punch_light","ripplez:stand/the_hand_punch_light_2"
+      "ripplez:stand/hand/the_hand_punch_light","ripplez:stand/hand/the_hand_punch_light_2"
     ]
   },
   "stand_punch_barrage":{
     "replace": true,
-    "sounds": ["ripplez:stand/the_hand_erasure_barrage"]
+    "sounds": ["ripplez:stand/hand/the_hand_erasure_barrage"]
   }
 }

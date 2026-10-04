@@ -1,6 +1,7 @@
 package com.zeml.ripplez;
 
 import com.mojang.logging.LogUtils;
+import com.zeml.ripplez.core.AddonPackets;
 import com.zeml.ripplez.init.*;
 import com.zeml.ripplez.init.power.AddonPlayerPowers;
 import com.zeml.ripplez.init.power.AddonStandAbilities;
@@ -39,7 +40,7 @@ public class RipplesAddon {
 
     @SubscribeEvent
     private void registerNetwork(RegisterPayloadHandlersEvent event) {
-        PacketsAddonRegister.register(event);
+        AddonPackets.register(event);
     }
 
     public static ResourceLocation resLoc(String path) {

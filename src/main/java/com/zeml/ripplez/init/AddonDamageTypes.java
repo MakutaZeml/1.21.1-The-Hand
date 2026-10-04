@@ -33,6 +33,17 @@ public class AddonDamageTypes {
             DamageTypeTags.BYPASSES_ARMOR,
             Tags.DamageTypes.IS_PHYSICAL);
 
+    public static final ResourceKey<DamageType> MOLD = DAMAGE_TYPES.withTags(RipplesAddon.resLoc("mold"),
+            ModDamageTypes.CAN_HURT_STANDS,
+            ModDamageTypes.ARMOR_BREAK_COOLDOWN,
+            DamageTypeTags.BYPASSES_COOLDOWN,
+            DamageTypeTags.BYPASSES_ENCHANTMENTS,
+            DamageTypeTags.ALWAYS_HURTS_ENDER_DRAGONS,
+            DamageTypeTags.PANIC_CAUSES,
+            DamageTypeTags.BYPASSES_EFFECTS,
+            DamageTypeTags.BYPASSES_RESISTANCE,
+            DamageTypeTags.BYPASSES_ARMOR);
+
     @SubscribeEvent
     public static void gatherData(GatherDataEvent event) {
         event.getGenerator().addProvider(event.includeServer(), DAMAGE_TYPES.makeTagsDatagenProvider(event));

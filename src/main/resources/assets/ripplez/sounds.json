@@ -1,6 +1,22 @@
 {
   "erasure": {
     "subtitle": "ripples_balls.subtitle.spay",
-    "sounds":["ripplez_diu:stand/the_hand_erase2","ripplez_diu:stand/the_hand_erase3"]
+    "sounds":["ripplez:stand/hand/the_hand_erase2","ripplez:stand/hand/the_hand_erase3"]
+  },
+  "aleluya":{
+    "subtitle": "ripplez.subtitle.aleluya",
+    "sounds": [ "ripplez:aleluya" ]
+  },
+  "disc_out":{
+    "subtitle": "ripplez.subtitle.cd_out",
+    "sounds": [ "ripplez:stand/white_snake/cd_out_00","ripplez:stand/white_snake/cd_out_01","ripplez:stand/white_snake/cd_out_03","ripplez:stand/white_snake/cd_out_04" ]
+  },
+  "step_behind":{
+    "subtitle": "ripplez.subtitle.step_behind",
+    "sounds": [ "ripplez:stand/white_snake/whitesnake_step" ]
+  },
+  "disc_extract": {
+    "subtitle": "ripplez.subtitle.disc_extract",
+    "sounds": [ "ripplez:stand/white_snake/disc_extract_sfx_1","ripplez:stand/white_snake/disc_extract_sfx_2","ripplez:stand/white_snake/disc_extract_sfx_combined" ]
   }
 }

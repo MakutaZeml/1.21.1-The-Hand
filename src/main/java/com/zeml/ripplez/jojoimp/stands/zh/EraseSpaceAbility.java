@@ -93,7 +93,6 @@ public class EraseSpaceAbility extends StandEntityAbility {
 
         @Override
         public void actionTick() {
-            RipplesAddon.getLogger().debug("ticks {} {} ", phase, curPhaseTick);
             if(this.extendableOBB() != null){
                 this.extendableOBB().tick();
                 Vec3 pos = getPerformer().position();

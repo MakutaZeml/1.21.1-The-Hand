@@ -1,0 +1,19 @@
+{
+  "stand_summon": {
+    "replace": true,
+    "sounds": [
+      "ripplez:stand/white_album/wa_summon_1"
+
+    ]
+  },
+  "stand_unsummon": {
+    "replace": true,
+    "sounds": [ "ripplez:stand/white_album/wa_unsummon" ]
+  },
+  "stand_punch_light": {
+    "replace": true,
+    "sounds": [
+      "ripplez:stand/white_album/wa_punch"
+    ]
+  }
+}

@@ -1,8 +1,21 @@
 package com.zeml.ripplez.init.power;
 
+import com.github.standobyte.jojo.entityattachment.custom_effect.EntityCustomEffectType;
+import com.github.standobyte.jojo.init.power.ModStandAbilities;
 import com.github.standobyte.jojo.core.JojoRegistries;
 import com.github.standobyte.jojo.powersystem.ability.Ability;
 import com.github.standobyte.jojo.powersystem.ability.AbilityType;
+
+import com.zeml.ripplez.jojoimp.stands.GreenChargePunchAbility;
+import com.zeml.ripplez.jojoimp.stands.green_day.GreenFinisherAbility;
+import com.zeml.ripplez.jojoimp.stands.green_day.MoldAbility;
+import com.zeml.ripplez.jojoimp.stands.green_day.MoldUserEffect;
+import com.zeml.ripplez.jojoimp.stands.green_day.MoldVictimEffect;
+import com.zeml.ripplez.jojoimp.stands.white_album.WhitePunch;
+import com.zeml.ripplez.jojoimp.stands.white_snake.*;
+import com.zeml.ripplez.jojoimp.stands.white_snake.effect.DiscOutEffect;
+import com.zeml.ripplez.jojoimp.stands.white_snake.effect.MemorylessEffect;
+import com.zeml.ripplez.jojoimp.stands.white_snake.effect.MusicDisckedEffect;
 import com.zeml.ripplez.RipplesAddon;
 import com.zeml.ripplez.jojoimp.stands.zh.*;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -11,6 +24,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public final class AddonStandAbilities {
 	public static final DeferredRegister<AbilityType<?>> ABILITY_TYPES = DeferredRegister.create(JojoRegistries.ABILITY_TYPES_REG, RipplesAddon.MOD_ID);
 
+	//Za Hando
 	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> ERASURE = ABILITY_TYPES.register(
 			"erasure", key -> new AbilityType<>(key, EraseAbility::new));
 
@@ -24,4 +38,48 @@ public final class AddonStandAbilities {
 
 	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> ERASE_ITEMS = ABILITY_TYPES.register(
 			"erase_items", key -> new AbilityType<>(key, EraseItemsAbility::new));
+
+	//White Snake
+
+	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> PUT_DISC = ABILITY_TYPES.register(
+			"put_disc", key -> new AbilityType<>(key, HeavyPutDiscAbility::new));
+	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> THROW_DISC = ABILITY_TYPES.register(
+			"throw_disc", key -> new AbilityType<>(key, ThrowDiscAbility::new));
+
+	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> USER_THROW_DISC = ABILITY_TYPES.register(
+			"user_throw_disc", key -> new AbilityType<>(key, UserThrowAbility::new));
+	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> DISCFY = ABILITY_TYPES.register(
+			"discfy", key -> new AbilityType<>(key, DiscFyAbility::new));
+
+	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> TAKE_OUT_STAND = ABILITY_TYPES.register(
+			"take_stand", key -> new AbilityType<>(key, TakeOutStandDiscAbility::new));
+
+	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> TAKE_OUT_MEMORY = ABILITY_TYPES.register(
+			"take_memory", key -> new AbilityType<>(key, TakeOutMemoryAbility::new));
+	public static final DeferredHolder<EntityCustomEffectType<?>, EntityCustomEffectType<MusicDisckedEffect>> MUSIC_DISC_EFFECT = ModStandAbilities.STAND_EFFECT_TYPES.register(
+			"music_disc", key -> new EntityCustomEffectType<>(key, MusicDisckedEffect::new));
+
+	public static final DeferredHolder<EntityCustomEffectType<?>, EntityCustomEffectType<DiscOutEffect>> DISC_OUT_EFFECT = ModStandAbilities.STAND_EFFECT_TYPES.register(
+			"disc_out", key -> new EntityCustomEffectType<>(key, DiscOutEffect::new));
+
+	public static final DeferredHolder<EntityCustomEffectType<?>, EntityCustomEffectType<MemorylessEffect>> NO_MEMORY_EFFECT = ModStandAbilities.STAND_EFFECT_TYPES.register(
+			"no_memory", key -> new EntityCustomEffectType<>(key, MemorylessEffect::new));
+
+	//White Album
+	public static final DeferredHolder<AbilityType<?>, AbilityType<WhitePunch>> WHITE_PUNCH = ABILITY_TYPES.register(
+			"wa_punch", key -> new AbilityType<>(key, WhitePunch::new));
+
+	//Green Day
+	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> CHOP = ABILITY_TYPES.register(
+			"gd_chop", key -> new AbilityType<>(key, GreenFinisherAbility::new));
+	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> CHOP_CHARGE = ABILITY_TYPES.register(
+			"gd_chop_ch", key -> new AbilityType<>(key, GreenChargePunchAbility::new));
+	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> MOLDING_TIME = ABILITY_TYPES.register(
+			"molding_time", key -> new AbilityType<>(key, MoldAbility::new));
+	public static final DeferredHolder<EntityCustomEffectType<?>, EntityCustomEffectType<MoldUserEffect>> USER_MOLD = ModStandAbilities.STAND_EFFECT_TYPES.register(
+			"user_mold", key -> new EntityCustomEffectType<>(key, MoldUserEffect::new));
+	public static final DeferredHolder<EntityCustomEffectType<?>, EntityCustomEffectType<MoldVictimEffect>> SPREAD_MOLD = ModStandAbilities.STAND_EFFECT_TYPES.register(
+			"spread_mold", key -> new EntityCustomEffectType<>(key, MoldVictimEffect::new));
+
+
 }
