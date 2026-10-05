@@ -18,6 +18,7 @@ import com.github.standobyte.jojo.subsystems.itemtracking.ItemTracker;
 import com.github.standobyte.jojo.subsystems.itemtracking.ItemTracking;
 import com.github.standobyte.jojo.util.functions.DamageUtil;
 import com.zeml.ripplez.RipplesAddon;
+import com.zeml.ripplez.core.packets.server.QuiteAllBombEffectsCauseReasons;
 import com.zeml.ripplez.init.AddonDamageTypes;
 import com.zeml.ripplez.init.AddonSoundEvents;
 import com.zeml.ripplez.init.power.AddonStandAbilities;
@@ -25,6 +26,7 @@ import com.zeml.ripplez.powersystem.entityaction.ActionCL;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
@@ -33,6 +35,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.item.PrimedTnt;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
@@ -41,6 +44,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -109,15 +113,31 @@ public class KQExplodeBomb extends EntityActionAbility {
                             if(entity.isAlive()){
                                 jankKQExplosion(level(),user,standPower,true,entity,null, null);
                                 killerBombEffect.remove();
+                                standPower.userStandEffects.getEffectsOfType(AddonStandAbilities.KILLER_QUEEN_BOMB.get()).forEach(KillerBombEffect::remove);
+
                             }
                         }
                         case BLOCK -> {
                             BlockPos blockPos = killerBombEffect.getBlockPos();
                             jankKQExplosion(level(),user,standPower,true,null,blockPos, null);
                             killerBombEffect.remove();
+                            standPower.userStandEffects.getEffectsOfType(AddonStandAbilities.KILLER_QUEEN_BOMB.get()).forEach(KillerBombEffect::remove);
+
                         }
                         case ITEM -> {
+                            ItemTracking allTrackers = ItemTracking.getItemTracking(level());
+                            for (ItemTracker tracker : allTrackers.values()){
+                                if ("first_bomb".equals(tracker.context)){
+                                    if(tracker.trackerId.equals(killerBombEffect.getItemTracker())){
+                                        jankKQExplosion(level(),user,standPower,true,null,null,tracker.getPos(level(),phasePartialTick));
+                                        standPower.userStandEffects.getEffectsOfType(AddonStandAbilities.KILLER_QUEEN_BOMB.get()).forEach(KillerBombEffect::remove);
+                                        if(!level().isClientSide && performer instanceof ServerPlayer player){
+                                            PacketDistributor.sendToPlayer(player,new QuiteAllBombEffectsCauseReasons(player.getId()));
+                                        }
 
+                                    }
+                                }
+                            }
                         }
                     }
                 });

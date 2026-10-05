@@ -23,8 +23,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static com.github.standobyte.jojo.client.ui.marker.MarkerRenderer.blockMarkerPos;
-import static com.github.standobyte.jojo.client.ui.marker.MarkerRenderer.entityMarkerPos;
+
 
 public class KillerBombEffect extends StandEffectInstance {
     private TargetType targetType;
@@ -43,6 +42,7 @@ public class KillerBombEffect extends StandEffectInstance {
 
     @Override
     protected void tick() {
+        RipplesAddon.getLogger().debug("wtf {} {}", level.isClientSide,targetType);
         if(targetType == null){
             this.remove();
         }
@@ -164,11 +164,25 @@ public class KillerBombEffect extends StandEffectInstance {
         Optional<UUID> optionalUUID = Optional.of(nbt.getUUID("tracker"));
         optionalUUID.ifPresent(uuid -> this.itemTracker = uuid);
 
+        Optional<Integer> optionalX = Optional.of(nbt.getInt("x"));
+        Optional<Integer> optionalY = Optional.of(nbt.getInt("y"));
+        Optional<Integer> optionalZ = Optional.of(nbt.getInt("z"));
+
+        if(optionalX.isPresent() && optionalY.isPresent() && optionalZ.isPresent()){
+            this.pos = new BlockPos(optionalX.get(),optionalY.get(),optionalZ.get());
+        }
+
+
     }
 
     @Override
     protected void writeAdditionalSaveData(CompoundTag nbt) {
         super.writeAdditionalSaveData(nbt);
+        if(this.pos != null){
+            nbt.putInt("x",this.pos.getX());
+            nbt.putInt("y",this.pos.getY());
+            nbt.putInt("z",this.pos.getZ());
+        }
         if(itemTracker != null){
             nbt.putUUID("tracker",this.itemTracker);
         }
@@ -195,14 +209,13 @@ public class KillerBombEffect extends StandEffectInstance {
         super.writeAdditionalPacketData(buf, sendingToUser);
         if(this.targetType != null){
             buf.writeEnum(this.targetType);
-            switch (this.targetType){
-                case BLOCK -> {
-                    buf.writeBlockPos(this.pos);
-                }
-                case ITEM -> {
-                    buf.writeUUID(this.itemTracker);
-                }
+            if(this.pos != null){
+                buf.writeBlockPos(this.pos);
             }
+            if(this.itemTracker != null){
+                buf.writeUUID(this.itemTracker);
+            }
+
         }
 
     }

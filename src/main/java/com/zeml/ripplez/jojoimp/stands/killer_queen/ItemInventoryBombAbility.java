@@ -112,7 +112,6 @@ public class ItemInventoryBombAbility extends StandEntityAbility {
                         tracker.context = "first_bomb";
                         tracker.setTrackedByPlayer(player);
                         StandPower power = StandPower.get(player);
-                        RipplesAddon.getLogger().debug("sexy {} {}", player, tracker.trackerId);
                         if(power != null){
                             power.userStandEffects.getEffectsOfType(AddonStandAbilities.KILLER_QUEEN_BOMB.get()).forEach(KillerBombEffect::remove);
 

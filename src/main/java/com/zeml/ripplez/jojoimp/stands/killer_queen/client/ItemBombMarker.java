@@ -41,7 +41,7 @@ public class ItemBombMarker extends MarkerRenderer {
             Optional<KillerBombEffect> optional = standPower.userStandEffects.getEffectOfType(AddonStandAbilities.KILLER_QUEEN_BOMB.get());
             if(optional.isPresent()){
                 for (ItemTracker tracker : allTrackers.values()) {
-                    if ("first_bomb".equals(tracker.context) && tracker.trackerId == optional.get().getItemTracker()) {
+                    if ("first_bomb".equals(tracker.context)) {
                         Vec3 pos = null;
                         Entity entity = tracker.getAtEntity(mc.level);
                         if (entity != null) {
