@@ -18,5 +18,8 @@
   "disc_extract": {
     "subtitle": "ripplez.subtitle.disc_extract",
     "sounds": [ "ripplez:stand/white_snake/disc_extract_sfx_1","ripplez:stand/white_snake/disc_extract_sfx_2","ripplez:stand/white_snake/disc_extract_sfx_combined" ]
+  },
+  "detonate": {
+    "sounds": [ "ripplez:stand/killer_queen/killer_queen_boom"]
   }
 }

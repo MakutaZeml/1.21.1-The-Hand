@@ -17,6 +17,13 @@
   "jojo_ripples.ability.erase_items": "Erase Items",
   "jojo_ripples.skill.erase_items.desc": "Erase the items you are selecting in your inventory",
   "jojo_ripples.skill.erase_items.controls": "C on item in the inventory",
+
+  "stand.ripplez.killer_queen": "Killer Queen",
+  "stand.ripplez.killer_queen.desc": "An Humanoid Stand-Type Power with decent combat capabilities, but its main power is to turn anything into a bomb anything that touches with its punches",
+  "jojo_ripples.skill.kq_put_bomb": "First Bomb",
+  "jojo_ripples.skill.kq_put_bomb.controls": "Hold \uEAFE",
+  "jojo_ripples.skill.kq_put_bomb.desc": "Put Killer Queen First Bomb in to an entity or a block, this automatically is gonna change to detonate the bombe dealing damage to the entities around, if an entity touches the bomb it's gonna blow up by itself",
+
   "stand.ripplez.white_snake": "White Snake",
   "stand.ripplez.white_snake.desc": "A humanoid Stand-Type power that has the power of psyche manipulation, such as illusions, this power mainly manifest in form of discs, whose are able to contain orders to the target or store the target memories or Stand-Type power",
   "entity.ripplez.threw_disc": "Disc",

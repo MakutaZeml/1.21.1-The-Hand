@@ -1,12 +1,12 @@
-// 1.21.1	2026-09-04T21:19:24.6441854	Tags for minecraft:damage_type mod id ripplez
-a54e0f8af6831a4b9bbbc272c265555a683fa872 data/jojo/tags/damage_type/can_hurt_stands.json
-04c3d72e9f46aba7d0b9b508974d337410c66743 data/jojo_ripples/tags/damage_type/adds_resolve.json
-a54e0f8af6831a4b9bbbc272c265555a683fa872 data/jojo_ripples/tags/damage_type/armor_break_cooldown.json
-a54e0f8af6831a4b9bbbc272c265555a683fa872 data/minecraft/tags/damage_type/always_hurts_ender_dragons.json
+// 1.21.1	2026-10-03T22:43:41.9002119	Tags for minecraft:damage_type mod id ripplez
+33e95ceeb3cec0af349444ec959ae50f29b5b521 data/jojo/tags/damage_type/can_hurt_stands.json
+b5f243858418258f26d0cfd7f77c2e882f3356b0 data/jojo_ripples/tags/damage_type/adds_resolve.json
+33e95ceeb3cec0af349444ec959ae50f29b5b521 data/jojo_ripples/tags/damage_type/armor_break_cooldown.json
+33e95ceeb3cec0af349444ec959ae50f29b5b521 data/minecraft/tags/damage_type/always_hurts_ender_dragons.json
 a54e0f8af6831a4b9bbbc272c265555a683fa872 data/minecraft/tags/damage_type/bypasses_armor.json
-a54e0f8af6831a4b9bbbc272c265555a683fa872 data/minecraft/tags/damage_type/bypasses_cooldown.json
+33e95ceeb3cec0af349444ec959ae50f29b5b521 data/minecraft/tags/damage_type/bypasses_cooldown.json
 a54e0f8af6831a4b9bbbc272c265555a683fa872 data/minecraft/tags/damage_type/bypasses_effects.json
-a54e0f8af6831a4b9bbbc272c265555a683fa872 data/minecraft/tags/damage_type/bypasses_enchantments.json
+33e95ceeb3cec0af349444ec959ae50f29b5b521 data/minecraft/tags/damage_type/bypasses_enchantments.json
 a54e0f8af6831a4b9bbbc272c265555a683fa872 data/minecraft/tags/damage_type/bypasses_resistance.json
-a54e0f8af6831a4b9bbbc272c265555a683fa872 data/minecraft/tags/damage_type/panic_causes.json
-04c3d72e9f46aba7d0b9b508974d337410c66743 data/neoforge/tags/damage_type/is_physical.json
+33e95ceeb3cec0af349444ec959ae50f29b5b521 data/minecraft/tags/damage_type/panic_causes.json
+b5f243858418258f26d0cfd7f77c2e882f3356b0 data/neoforge/tags/damage_type/is_physical.json

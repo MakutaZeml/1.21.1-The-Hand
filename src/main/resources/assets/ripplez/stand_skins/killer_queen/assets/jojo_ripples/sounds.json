@@ -1,0 +1,41 @@
+{
+  "stand_summon": {
+    "replace": true,
+    "sounds": [ 
+      "ripplez:stand/killer_queen/killer_queen_summon",
+      "ripplez:stand/killer_queen/killer_queen_summon_2",
+      "ripplez:stand/killer_queen/killer_queen_summon_3",
+      "ripplez:stand/killer_queen/killer_queen_summon_4",
+      "ripplez:stand/killer_queen/killer_queen_summon_5",
+      "ripplez:stand/killer_queen/killer_queen_summon_6"
+    ]
+  },
+  "stand_unsummon": {
+    "replace": true,
+    "sounds": [ "ripplez:stand/killer_queen/killer_queen_unsummon" ]
+  },
+  "stand_punch_light": {
+    "replace": true,
+    "sounds": [ 
+      "ripplez:stand/killer_queen/killer_queen_punch"
+    ]
+  },
+  "stand_punch_barrage": {
+    "replace": true,
+    "sounds": [
+      "ripplez:stand/killer_queen/killer_queen_punch"
+    ]
+  },
+  "stand_punch_heavy": {
+    "replace": true,
+    "sounds": [ 
+      "ripplez:stand/killer_queen/killer_queen_punch_heavy"
+    ]
+  },
+  "stand_punch_heavy_charged": {
+    "replace": true,
+    "sounds": [
+      "ripplez:stand/killer_queen/killer_queen_punch_heavy"
+    ]
+  }
+}

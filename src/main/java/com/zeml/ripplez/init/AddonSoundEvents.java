@@ -22,6 +22,7 @@ public class AddonSoundEvents {
 	public static final DeferredHolder<SoundEvent, SoundEvent> DISC_TOOK = SOUNDS.register("disc_extract", SoundEvent::createVariableRangeEvent);
 
 	public static final DeferredHolder<SoundEvent, SoundEvent> ERASURE = SOUNDS.register("erasure", SoundEvent::createVariableRangeEvent);
+	public static final DeferredHolder<SoundEvent, SoundEvent> DETONATE = SOUNDS.register("detonate", SoundEvent::createVariableRangeEvent);
 
 	private static ResourceKey<JukeboxSong> createSong(String name){
 		return ResourceKey.create(Registries.JUKEBOX_SONG, RipplesAddon.resLoc(name));

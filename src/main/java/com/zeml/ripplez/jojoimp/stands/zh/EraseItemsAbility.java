@@ -47,7 +47,7 @@ public class EraseItemsAbility extends StandEntityAbility {
 
     public static class ItemDelete extends EntityActionInstance{
         private Optional<ContainerSlotInput> inputInvSlot = Optional.empty();
-        private ItemStack repairedStack = ItemStack.EMPTY;
+        private ItemStack deletedStack = ItemStack.EMPTY;
         public ItemDelete(EntityActionType ability) {
             super(ability);
         }
@@ -60,7 +60,7 @@ public class EraseItemsAbility extends StandEntityAbility {
         @Override
         public void onActionSet(@Nullable EntityActionInstance prevAction) {
             if (inputInvSlot != null && inputInvSlot.isPresent() && powerUser.getEntity(level()) instanceof Player player) {
-                repairedStack = inputInvSlot.get().getItem(player);
+                deletedStack = inputInvSlot.get().getItem(player);
             }
         }
 
@@ -73,8 +73,8 @@ public class EraseItemsAbility extends StandEntityAbility {
         public void actionTick(){
             Level level = level();
             if(!level.isClientSide){
-                if(repairedStack != null && !repairedStack.isEmpty()){
-                    repairedStack.shrink(1);
+                if(deletedStack != null && !deletedStack.isEmpty()){
+                    deletedStack.shrink(1);
                     StandPower power = StandPower.get(performer);
                     if(power != null && power.hasPower()){
                         power.addExp(2);

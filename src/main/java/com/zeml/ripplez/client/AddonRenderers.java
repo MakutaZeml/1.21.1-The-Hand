@@ -2,12 +2,15 @@ package com.zeml.ripplez.client;
 
 import com.github.standobyte.jojo.client.standskin.StandSkinsScreen;
 import com.github.standobyte.jojo.client.ui.StandStatsRenderer;
+import com.github.standobyte.jojo.client.ui.marker.MarkerRenderer;
 import com.github.standobyte.jojo.powersystem.standpower.StandPower;
 import com.github.standobyte.jojo.powersystem.standpower.StandStats;
 import com.zeml.ripplez.RipplesAddon;
 import com.zeml.ripplez.init.AddonEntityTypes;
 import com.zeml.ripplez.init.power.AddonStands;
 import com.zeml.ripplez.init.power.stands.StandInitWhiteAlbum;
+import com.zeml.ripplez.jojoimp.stands.killer_queen.client.BombMarker;
+import com.zeml.ripplez.jojoimp.stands.killer_queen.client.ItemBombMarker;
 import com.zeml.ripplez.jojoimp.stands.white_album.client.WhiteAlbumSkinView;
 import com.zeml.ripplez.jojoimp.stands.white_album.client.renderer.WhiteAlbumLayer;
 import com.zeml.ripplez.jojoimp.stands.white_snake.client.renderer.DiscOutLayer;
@@ -55,8 +58,11 @@ public class AddonRenderers {
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void onClientSetup0(FMLClientSetupEvent event){
+        Minecraft mc = Minecraft.getInstance();
         whiteSnakeStats();
         greenDayStats();
+        MarkerRenderer.registerMarkerRenderer(new BombMarker(mc));
+        MarkerRenderer.registerMarkerRenderer(new ItemBombMarker(mc));
 
         StandSkinsScreen.skinViewTypes.put(StandInitWhiteAlbum.SKIN_VIEW_TYPE, WhiteAlbumSkinView::new);
     }
