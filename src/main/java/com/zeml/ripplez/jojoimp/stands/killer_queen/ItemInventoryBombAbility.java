@@ -15,14 +15,17 @@ import com.github.standobyte.jojo.powersystem.standpower.StandPower;
 import com.github.standobyte.jojo.powersystem.standpower.entity.StandEntityAbility;
 import com.github.standobyte.jojo.subsystems.itemtracking.ItemTracker;
 import com.github.standobyte.jojo.subsystems.itemtracking.ItemTracking;
+import com.github.standobyte.jojo.util.functions.ItemUtil;
 import com.github.standobyte.jojo.util.functions_network.NetworkUtil;
 import com.github.standobyte.jojo.util.objects_mc.ContainerSlotInput;
 import com.zeml.ripplez.RipplesAddon;
 import com.zeml.ripplez.core.packets.server.EffectBombItemPacket;
 import com.zeml.ripplez.init.power.AddonStandAbilities;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -30,6 +33,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.Nullable;
@@ -45,26 +49,6 @@ public class ItemInventoryBombAbility extends StandEntityAbility {
         setDefaultPhaseLength(ActionPhase.RECOVERY,10);
     }
 
-    @Override
-    public ConditionCheck checkSpecificConditions(Power<?> context) {
-        if (context.getUser().level().isClientSide()) {
-            Screen screen = Minecraft.getInstance().screen;
-            if (screen instanceof AbstractContainerScreen invScreen) {
-                boolean active = false;
-                if (!InputHandler.inputsDisabled) {
-                    Slot hovered = invScreen.getSlotUnderMouse();
-                    if (hovered != null) {
-                        ItemStack item = hovered.getItem();
-                        active = item.getCount() == 1;
-                    }
-                }
-                if (!active) {
-                    return ConditionCheck.NEGATIVE;
-                }
-            }
-        }
-        return super.checkSpecificConditions(context);
-    }
 
     @Override
     public AbilityInputState cl_abilityInputState(Power<?> context) {
@@ -97,6 +81,7 @@ public class ItemInventoryBombAbility extends StandEntityAbility {
         public void onActionSet(@Nullable EntityActionInstance prevAction) {
             if (inputInvSlot != null && inputInvSlot.isPresent() && powerUser.getEntity(level()) instanceof Player player) {
                 bombStack = inputInvSlot.get().getItem(player);
+                RipplesAddon.getLogger().debug("inv {}",inputInvSlot.get());
             }
         }
 
@@ -104,17 +89,19 @@ public class ItemInventoryBombAbility extends StandEntityAbility {
         public void actionPerformStart() {
             Level level = level();
             if(!level.isClientSide){
-                if(bombStack != null && !bombStack.isEmpty() && bombStack.getCount() == 1){
+                if(bombStack != null && !bombStack.isEmpty()){
                     if(getPowerUser() instanceof Player player){
                         ServerLevel serverLevel = (ServerLevel) level();
                         ItemTracking trackingSystem = ItemTracking.getItemTracking(level);
-                        ItemTracker tracker = trackingSystem.startTracking(bombStack, serverLevel);
+                        ItemStack newStack = bombStack.copyWithCount(1);
+                        bombStack.shrink(1);
+                        ItemTracker tracker = trackingSystem.startTracking(newStack, serverLevel);
                         tracker.context = "first_bomb";
                         tracker.setTrackedByPlayer(player);
+                        ItemUtil.giveItemTo(player,newStack,true);
                         StandPower power = StandPower.get(player);
                         if(power != null){
                             power.userStandEffects.getEffectsOfType(AddonStandAbilities.KILLER_QUEEN_BOMB.get()).forEach(KillerBombEffect::remove);
-
                             KillerBombEffect newEffect = AddonStandAbilities.KILLER_QUEEN_BOMB.get().create(level);
                             power.userStandEffects.addEffect(newEffect.withTracker(tracker.trackerId));
 

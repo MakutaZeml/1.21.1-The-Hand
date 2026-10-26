@@ -2,10 +2,7 @@ package com.zeml.ripplez.core;
 
 import com.github.standobyte.jojo.PacketsRegister;
 import com.zeml.ripplez.RipplesAddon;
-import com.zeml.ripplez.core.packets.server.DiscOutDataPacket;
-import com.zeml.ripplez.core.packets.server.EffectBombItemPacket;
-import com.zeml.ripplez.core.packets.server.QuiteAllBombEffectsCauseReasons;
-import com.zeml.ripplez.core.packets.server.WhiteSnakeMusicDataPacket;
+import com.zeml.ripplez.core.packets.server.*;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
@@ -15,6 +12,8 @@ public class AddonPackets {
         PacketsRegister.registerPacket(registrar,PayloadRegistrar::playToClient, new WhiteSnakeMusicDataPacket.Handler(RipplesAddon.resLoc("music")));
         PacketsRegister.registerPacket(registrar,PayloadRegistrar::playToClient, new DiscOutDataPacket.Handler(RipplesAddon.resLoc("disc_out")));
         PacketsRegister.registerPacket(registrar,PayloadRegistrar::playToClient, new EffectBombItemPacket.Handler(RipplesAddon.resLoc("item_bomb")));
+        PacketsRegister.registerPacket(registrar,PayloadRegistrar::playToClient, new EffectBombBlockPacket.Handler(RipplesAddon.resLoc("block_bomb")));
+
         PacketsRegister.registerPacket(registrar,PayloadRegistrar::playToClient, new QuiteAllBombEffectsCauseReasons.Handler(RipplesAddon.resLoc("remove_bomb")));
 
 

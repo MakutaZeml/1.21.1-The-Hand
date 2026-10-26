@@ -11,10 +11,7 @@ import com.zeml.ripplez.jojoimp.stands.green_day.GreenFinisherAbility;
 import com.zeml.ripplez.jojoimp.stands.green_day.MoldAbility;
 import com.zeml.ripplez.jojoimp.stands.green_day.MoldUserEffect;
 import com.zeml.ripplez.jojoimp.stands.green_day.MoldVictimEffect;
-import com.zeml.ripplez.jojoimp.stands.killer_queen.ItemInventoryBombAbility;
-import com.zeml.ripplez.jojoimp.stands.killer_queen.KQExplodeBomb;
-import com.zeml.ripplez.jojoimp.stands.killer_queen.KillerBombEffect;
-import com.zeml.ripplez.jojoimp.stands.killer_queen.KillerQueenPutBombAbility;
+import com.zeml.ripplez.jojoimp.stands.killer_queen.*;
 import com.zeml.ripplez.jojoimp.stands.white_album.WhitePunch;
 import com.zeml.ripplez.jojoimp.stands.white_snake.*;
 import com.zeml.ripplez.jojoimp.stands.white_snake.effect.DiscOutEffect;
@@ -49,11 +46,18 @@ public final class AddonStandAbilities {
 
 	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> ITEM_BOMB = ABILITY_TYPES.register(
 			"item_bomb", key -> new AbilityType<>(key, ItemInventoryBombAbility::new));
+	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> ARMOR_BOMB = ABILITY_TYPES.register(
+			"armor_bomb", key -> new AbilityType<>(key, KQFinisherAbility::new));
 	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> KQ_EXPLODE = ABILITY_TYPES.register(
 			"kq_explode", key -> new AbilityType<>(key, KQExplodeBomb::new));
+
+	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> SHA = ABILITY_TYPES.register(
+			"kq_sha", key -> new AbilityType<>(key, SheerHeartAttackAbility::new));
 	public static final DeferredHolder<EntityCustomEffectType<?>, EntityCustomEffectType<KillerBombEffect>> KILLER_QUEEN_BOMB = ModStandAbilities.STAND_EFFECT_TYPES.register(
 			"kq_bomb", key -> new EntityCustomEffectType<>(key, KillerBombEffect::new));
 
+	public static final DeferredHolder<EntityCustomEffectType<?>, EntityCustomEffectType<SheerHAEffect>> KILLER_QUEEN_2_BOMB = ModStandAbilities.STAND_EFFECT_TYPES.register(
+			"kq_second_bomb", key -> new EntityCustomEffectType<>(key, SheerHAEffect::new));
 	//White Snake
 	public static final DeferredHolder<AbilityType<?>, AbilityType<Ability>> PUT_DISC = ABILITY_TYPES.register(
 			"put_disc", key -> new AbilityType<>(key, HeavyPutDiscAbility::new));

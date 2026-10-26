@@ -1,5 +1,11 @@
 {  
 	"stand_type": "ripplez:killer_queen",
-	"color" : "#da7baf",
+	"color" : {
+		"primary": "#da7baf",
+		"secondary": "#CE1D9B",
+		"text": "#da7bafF",
+		"text_white_bg": "#81007B",
+		"aura": "#81007B"
+	},
 	"story_part": "jojo_ripples:p4"
 }

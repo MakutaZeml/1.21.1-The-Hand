@@ -10,7 +10,8 @@ import com.zeml.ripplez.init.AddonEntityTypes;
 import com.zeml.ripplez.init.power.AddonStands;
 import com.zeml.ripplez.init.power.stands.StandInitWhiteAlbum;
 import com.zeml.ripplez.jojoimp.stands.killer_queen.client.BombMarker;
-import com.zeml.ripplez.jojoimp.stands.killer_queen.client.ItemBombMarker;
+import com.zeml.ripplez.jojoimp.stands.killer_queen.client.renderer.SheerHeartAttackModel;
+import com.zeml.ripplez.jojoimp.stands.killer_queen.client.renderer.SheerHeartAttackRenderer;
 import com.zeml.ripplez.jojoimp.stands.white_album.client.WhiteAlbumSkinView;
 import com.zeml.ripplez.jojoimp.stands.white_album.client.renderer.WhiteAlbumLayer;
 import com.zeml.ripplez.jojoimp.stands.white_snake.client.renderer.DiscOutLayer;
@@ -35,6 +36,12 @@ public class AddonRenderers {
     @SubscribeEvent
     public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event){
         event.registerEntityRenderer(AddonEntityTypes.THREW_DISC.get(), ThrowDiscRenderer::new);
+        event.registerEntityRenderer(AddonEntityTypes.SHA.get(), SheerHeartAttackRenderer::new);
+    }
+
+    @SubscribeEvent
+    public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event){
+        event.registerLayerDefinition(SheerHeartAttackModel.SHA,SheerHeartAttackModel::createBodyLayer);
     }
 
 
@@ -62,7 +69,6 @@ public class AddonRenderers {
         whiteSnakeStats();
         greenDayStats();
         MarkerRenderer.registerMarkerRenderer(new BombMarker(mc));
-        MarkerRenderer.registerMarkerRenderer(new ItemBombMarker(mc));
 
         StandSkinsScreen.skinViewTypes.put(StandInitWhiteAlbum.SKIN_VIEW_TYPE, WhiteAlbumSkinView::new);
     }

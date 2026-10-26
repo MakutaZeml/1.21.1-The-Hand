@@ -1,6 +1,7 @@
 package com.zeml.ripplez.init;
 
 import com.zeml.ripplez.RipplesAddon;
+import com.zeml.ripplez.jojoimp.stands.killer_queen.entity.SheerHeartAttack;
 import com.zeml.ripplez.jojoimp.stands.white_snake.entity.ThrewDiscEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
@@ -18,7 +19,7 @@ public final class AddonEntityTypes {
 	
 	@SubscribeEvent
 	public static void registerAttributes(EntityAttributeCreationEvent event) {
-//		event.put(EXAMPLE.get(), ArmorStand.createAttributes().build());
+		event.put(SHA.get(),SheerHeartAttack.createAttributes().build());
 	}
 
 	public static final DeferredHolder<EntityType<?>, EntityType<ThrewDiscEntity>> THREW_DISC = ENTITY_TYPES.register("threw_disc", key ->
@@ -27,6 +28,13 @@ public final class AddonEntityTypes {
 					.sized(0.25F, 0.25F)
 					.clientTrackingRange(4)
 					.updateInterval(10)
+					.build(createIDFor(key)));
+
+	public static final DeferredHolder<EntityType<?>, EntityType<SheerHeartAttack>> SHA = ENTITY_TYPES.register("sha", key ->
+			EntityType.Builder.<SheerHeartAttack>of(SheerHeartAttack::new, MobCategory.MISC)
+					.sized(0.85F,0.7F)
+					.clientTrackingRange(32)
+					.updateInterval(2)
 					.build(createIDFor(key)));
 
 	public static String createIDFor(ResourceLocation key) {

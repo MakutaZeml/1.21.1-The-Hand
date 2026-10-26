@@ -7,14 +7,19 @@ import com.github.standobyte.jojo.subsystems.itemtracking.ItemTrackDebugMarker;
 import com.github.standobyte.jojo.subsystems.itemtracking.ItemTracker;
 import com.github.standobyte.jojo.subsystems.itemtracking.ItemTracking;
 import com.zeml.ripplez.RipplesAddon;
+import com.zeml.ripplez.core.packets.server.QuiteAllBombEffectsCauseReasons;
+import com.zeml.ripplez.init.power.AddonStandAbilities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.network.PacketDistributor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -42,7 +47,6 @@ public class KillerBombEffect extends StandEffectInstance {
 
     @Override
     protected void tick() {
-        RipplesAddon.getLogger().debug("wtf {} {}", level.isClientSide,targetType);
         if(targetType == null){
             this.remove();
         }
@@ -76,7 +80,18 @@ public class KillerBombEffect extends StandEffectInstance {
                     }
                 }
                 case ITEM -> {
-                    RipplesAddon.getLogger().debug("a shit {}", itemTracker);
+                    ItemTracking allTrackers = ItemTracking.getItemTracking(level);
+                    for (ItemTracker tracker : allTrackers.values()){
+                        if ("first_bomb".equals(tracker.context) && tracker.trackerId.equals(itemTracker)) {
+                            if(tracker.getItem() == null || tracker.getPos(level,1)==null ||
+                                    (tracker.getPos(level,1) != null && tracker.getPos(level,1).distanceTo(user.position())>range)){
+                                userPower.userStandEffects.getEffectsOfType(AddonStandAbilities.KILLER_QUEEN_BOMB.get()).forEach(KillerBombEffect::remove);
+                                if(!level.isClientSide && user instanceof ServerPlayer serverPlayer){
+                                    PacketDistributor.sendToPlayer(serverPlayer,new QuiteAllBombEffectsCauseReasons(serverPlayer.getId()));
+                                }
+                            }
+                        }
+                    }
                 }
                 default -> {this.remove();}
             }

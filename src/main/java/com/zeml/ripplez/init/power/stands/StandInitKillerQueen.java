@@ -2,6 +2,7 @@ package com.zeml.ripplez.init.power.stands;
 
 import com.github.standobyte.jojo.init.power.ModStandAbilities;
 import com.github.standobyte.jojo.powersystem.MovesetBuilder;
+import com.github.standobyte.jojo.powersystem.ability.Ability;
 import com.github.standobyte.jojo.powersystem.ability.controls.InputKey;
 import com.github.standobyte.jojo.powersystem.ability.controls.InputMethod;
 import com.github.standobyte.jojo.powersystem.entityaction.ActionPhase;
@@ -40,11 +41,12 @@ public class StandInitKillerQueen {
                         })
                         .addAbility("barrage", ModStandAbilities.BARRAGE)
                         .addAbility("heavy_punch", ModStandAbilities.HEAVY_PUNCH)
+                        .addAbility("finisher", AddonStandAbilities.ARMOR_BOMB.get(), Ability::initIsFinisher)
 
                         .addAbility("kq_put_bomb", AddonStandAbilities.PUT_BOMB)
                         .addAbility("kq_explode_bomb", AddonStandAbilities.KQ_EXPLODE, explode->explode.isSubAbility = true)
                         .addAbility("grab", ModStandAbilities.GRAB)
-                        .addAbility("grab_throw", ModStandAbilities.GRAB_THROW)
+                        //.addAbility("grab_throw", ModStandAbilities.GRAB_THROW)
                         .addAbility("grab_punch", ModStandAbilities.PUNCH, punch -> {
                             punch.initIsGrabVariation();
                         })
@@ -60,6 +62,7 @@ public class StandInitKillerQueen {
                         })
 //
                         .addAbility("bomb_item",AddonStandAbilities.ITEM_BOMB.get())
+                        .addAbility("second_bomb",AddonStandAbilities.SHA.get())
 
 
 
@@ -69,24 +72,24 @@ public class StandInitKillerQueen {
                         .bind("heavy_punch", InputMethod.CLICK, InputKey.RMB)
                         .bind("kq_put_bomb", InputMethod.HOLD, InputKey.RMB)
                         .bind("grab", InputMethod.CLICK, InputKey.RMB.withModifier(InputKey.Modifier.CONTROL))
-                        .bind("grab_throw", InputMethod.HOLD, InputKey.RMB)
+                        //.bind("grab_throw", InputMethod.HOLD, InputKey.RMB)
 
                         .bind("bomb_item",InputMethod.HOLD,InputKey.C)
 
-                        //.makeHotbar(0, USE_SPECIAL, SWITCH_SPECIAL)
-
+                        /*.makeHotbar(0, USE_SPECIAL, SWITCH_SPECIAL)
+                        .addToHotbar("second_bomb",0,InputMethod.CLICK)*/
                         .finalizeControlScheme()
 
 
                         .addSkill(StandUnlockableSkill.startingAbility("punch"))
                         .addSkill(StandUnlockableSkill.startingAbility("barrage"))
                         .addSkill(StandUnlockableSkill.startingAbility("heavy_punch"))
+                        .addSkill(StandUnlockableSkill.startingAbility("finisher").prerequisiteSkill("heavy_punch"))
                         .addSkill(StandUnlockableSkill.startingAbility("bomb_item"))
                         .addSkill(StandUnlockableSkill.unlockableAbility("kq_put_bomb",200).prerequisiteSkill("heavy_punch","bomb_item"))
-
                         .addSkill(StandUnlockableSkill.startingAbility("grab"))
                         .addSkill(StandUnlockableSkill.unlockableAbility("grab_throw", 100).prerequisiteSkill("grab").setIncomplete())
-
+                        .addSkill(StandUnlockableSkill.unlockableAbility("second_bomb",150).prerequisiteSkill("kq_put_bomb"))
 
                         .addSkill(StandUnlockableSkill.unlockableAbility("leap", 250).setNotYetImplemented())
                         .addHumanoidStandSkills()
